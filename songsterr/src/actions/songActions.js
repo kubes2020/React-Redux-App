@@ -14,6 +14,6 @@ export const fetchSongs = (url) => (dispatch) => {
     })
     .catch((err) => {
       console.log("Error fetching res", err);
-      dispatch({ FETCH_SONG_FAILURE });
+      dispatch({ FETCH_SONG_FAILURE, payload: err.error });
     });
 };
