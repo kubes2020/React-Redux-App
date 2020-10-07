@@ -6,6 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { thunk } from "redux-thunk";
+import { songReducer } from "./reducers/songReducer";
 
 const store = createStore(songReducer, applyMiddleware(thunk));
 console.log("This is state from index.js", store.getState());
