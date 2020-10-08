@@ -26,22 +26,29 @@ function App(props) {
 
   return (
     <>
-      <h1>Find Chords To Your Favorite Songs / Artists!</h1>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="searchTerm">
-          Search:
-          <input
-            type="text"
-            name="searchTerm"
-            onChange={onChange}
-            value={searchTerm}
-          />
-        </label>
-        <button>Submit</button>
-      </form>
-      {props.songs.map((song) => (
-        <h2 key={song.id}>{song.title}</h2>
-      ))}
+      <div className="App">
+        <div className="App-header">
+          <h1>
+            Find Chords
+            <br /> To Your Favorite Songs!
+          </h1>
+        </div>
+        <form onSubmit={onSubmit}>
+          <label htmlFor="searchTerm">
+            Search:
+            <input
+              type="text"
+              name="searchTerm"
+              onChange={onChange}
+              value={searchTerm}
+            />
+          </label>
+          <button>Submit</button>
+        </form>
+        {props.songs.map((song) => (
+          <h2 key={song.id}>{song.title}</h2>
+        ))}
+      </div>
     </>
   );
 }
