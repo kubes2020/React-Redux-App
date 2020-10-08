@@ -5,6 +5,7 @@ import { fetchSongs } from "./actions/songActions";
 
 function App(props) {
   const { fetchSongs } = props;
+  const [searchTerm, setSearchTerm] = useState();
   const [url, setUrl] = useState(
     "http://www.songsterr.com/a/ra/songs.json?pattern=Marley"
   );
@@ -13,9 +14,31 @@ function App(props) {
     fetchSongs(url);
   }, [fetchSongs, url]);
 
+  const onChange = (e) => {
+    e.persist();
+    setSearchTerm(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setUrl(`http://www.songsterr.com/a/ra/songs.json?pattern=${searchTerm}`);
+  };
+
   return (
     <>
-      <h1>Just a Test!</h1>
+      <h1>Find Chords To Your Favorite Songs / Artists!</h1>
+      <form onSubmit={onSubmit}>
+        <label htmlFor="searchTerm">
+          Search:
+          <input
+            type="text"
+            name="searchTerm"
+            onChange={onChange}
+            value={searchTerm}
+          />
+        </label>
+        <button>Submit</button>
+      </form>
       {props.songs.map((song) => (
         <h2 key={song.id}>{song.title}</h2>
       ))}
