@@ -5,12 +5,13 @@ import {
 } from "../actions/songActions";
 
 const initialState = {
-  data: [],
+  songs: [],
   isLoading: false,
   error: "",
 };
 
 export const songReducer = (state = initialState, action) => {
+  console.log("action in songReducer", action.payload);
   switch (action.type) {
     case FETCH_SONG_START:
       return {
@@ -20,7 +21,7 @@ export const songReducer = (state = initialState, action) => {
     case FETCH_SONG_SUCCESS:
       return {
         ...state,
-        data: action.payload,
+        songs: action.payload,
         isLoading: false,
       };
     case FETCH_SONG_FAILURE:
